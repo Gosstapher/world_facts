@@ -17,10 +17,34 @@ window.onload = function(){
         opt.value = countryList[i].name;
         sel.appendChild(opt);
       };
+// ---------------- get country info from drop down--------------
+      // var name = document.getElementById('select').value
+      // var result = _.find(countryList, function(o) { return o.name == name; });
+      // console.log(result.capital);
 
-      
+      select.oninput = function() {
+        var name = document.getElementById('select').value
+        var result = _.find(countryList, function(o) { return o.name == name; });
+        console.log(result.capital);
 
+        var countryName = document.querySelector("#country-name");
+        var countryCapital = document.querySelector("#capital");
+        var countryPop = document.querySelector("#population");
+        countryName.innerText = result.name;
+        countryCapital.innerText = ("capital city : " + result.capital);
+        countryPop.innerText = ("population : "+ result.population);
+      }
+
+
+
+
+
+
+
+      //---------- this is the end of the if ---------------------
     }
+
+    //-------- this is the end on onload -------------------------
   }
 
 
