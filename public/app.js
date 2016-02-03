@@ -25,17 +25,25 @@ window.onload = function(){
       select.oninput = function() {
         var name = document.getElementById('select').value
         var result = _.find(countryList, function(o) { return o.name == name; });
-        console.log(result.capital);
+        localStorage.setItem('setCountry', JSON.stringify(result));
+        var storedCountry = JSON.parse(localStorage.getItem('setCountry'));
 
         var countryName = document.querySelector("#country-name");
         var countryCapital = document.querySelector("#capital");
         var countryPop = document.querySelector("#population");
-        countryName.innerText = result.name;
-        countryCapital.innerText = ("capital city : " + result.capital);
-        countryPop.innerText = ("population : "+ result.population);
+        countryName.innerText = ("You have selected : " + storedCountry.name);
+        countryCapital.innerText = ("Did you know that the capital city of " +  storedCountry.name + " is : " + storedCountry.capital);
+        countryPop.innerText = ("It will astound you to find out that " + storedCountry.name + " has a population of : " + (storedCountry.population.toLocaleString()));
+
+
       }
-
-
+      var storedCountry = JSON.parse(localStorage.getItem('setCountry'));
+      var countryName = document.querySelector("#country-name");
+      var countryCapital = document.querySelector("#capital");
+      var countryPop = document.querySelector("#population");
+      countryName.innerText = ("You have selected : " + storedCountry.name);
+      countryCapital.innerText = ("Did you know that the capital city of " + storedCountry.name + " is : " + storedCountry.capital);
+      countryPop.innerText = ("It will astound you to find out that " + storedCountry.name + " has a population of : " + storedCountry.population.toLocaleString());
 
 
 
